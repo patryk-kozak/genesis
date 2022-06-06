@@ -504,7 +504,7 @@ sub run {
 		}
 		$tracemsg .= "\n\n";
 	}
-	my $shell = $opts{shell} || '/bin/bash';
+	my $shell = $opts{shell} || '/usr/bin/env bash';
 	if (!$opts{interactive} && $opts{stderr}) {
 		$prog .= " 2>$opts{stderr}";
 	}
@@ -1201,7 +1201,7 @@ environment variables will only be set for the duration of the command run.
 
 =item shell
 
-Change the executing shell from C</bin/bash> to something else.  You
+Change the executing shell from C</usr/bin/env bash> to something else.  You
 generally don't need to set this unless you are doing something strange.
 
 =item stderr
