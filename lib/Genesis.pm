@@ -504,7 +504,7 @@ sub run {
 		}
 		$tracemsg .= "\n\n";
 	}
-	my $shell = $opts{shell} || '/usr/bin/env bash';
+	my $shell = $opts{shell} || '/usr/bin/env bash ';
 	if (!$opts{interactive} && $opts{stderr}) {
 		$prog .= " 2>$opts{stderr}";
 	}
@@ -519,13 +519,13 @@ sub run {
 	}
 	trace("%s",$tracemsg);
 
-	my @cmd = ($shell, "-c", $prog, @args);
+	my @cmd = ($shell, "-c \"$prog @args\"");
 	my $start_time = gettimeofday();
 	my $out;
 	if ($opts{interactive}) {
 		system @cmd;
 	} else {
-		open my $pipe, "-|", @cmd;
+		open(my $pipe, "-|", "@cmd");
 		$out = do { local $/; <$pipe> };
 		$out =~ s/\s+$//;
 		close $pipe;
