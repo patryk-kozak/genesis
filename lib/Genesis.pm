@@ -7,7 +7,7 @@ use utf8;
 our $VERSION = "(development)";
 our $BUILD   = "";
 
-our $GITHUB  = "https://github.com/genesis-community/genesis";
+our $GITHUB  = "https://github.com/patryk-kozak/genesis";
 
 use Data::Dumper;
 use File::Basename qw/basename dirname/;
